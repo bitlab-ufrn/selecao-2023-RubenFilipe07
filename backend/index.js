@@ -57,11 +57,26 @@ app.get('/palavras-ofensivas', async (req, res) => {
     res.send(resultado.rows);
 });
 
+//mostra uma palavra ofensiva pelo id
+app.get('/palavras-ofensivas/:id', async (req, res) => {
+    const { id } = req.params;
+    const resultado = await pool.query('SELECT * FROM palavras_ofensivas WHERE id = $1', [id]);
+    res.send(resultado.rows);
+});
+
 //deleta uma palavra ofensiva pelo id
 app.delete('/palavras-ofensivas/:id', async (req, res) => {
     const { id } = req.params;
     const resultado = await pool.query('DELETE FROM palavras_ofensivas WHERE id = $1', [id]);
     res.send('Palavra deletada com sucesso!');
+});
+
+//atualiza uma palavra ofensiva pelo id
+app.put('/palavras-ofensivas/:id', async (req, res) => {
+    const { id } = req.params;
+    const { palavra } = req.body;
+    const resultado = await pool.query('UPDATE palavras_ofensivas SET palavra = $1 WHERE id = $2', [palavra.toLowerCase(), id]);
+    res.send('Palavra atualizada com sucesso!');
 });
 
 //cadastra um administrador
