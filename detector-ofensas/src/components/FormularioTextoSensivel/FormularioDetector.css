@@ -1,0 +1,21 @@
+.form-detector{
+    width: 60%;
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin: 3% auto ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+.form-detector textarea {
+  max-height: 350px;
+}
+
+.form-detector button {
+    display: block;
+    margin: 0px auto;
+    width: 40%;
+}

@@ -6,7 +6,7 @@ import {
 } from 'antd'
 
 import FooterContent from '../components/FooterContent/FooterContent';
-import FormularioTextoSensivel from '../components/FormularioTextoSensivel/FormularioTextoSensivel';
+import FormularioDetector from '../components/FormularioTextoSensivel/FormularioDetector';
 import { Link } from 'react-router-dom';
 
 const { Footer, Content } = Layout;
@@ -38,7 +38,7 @@ const Detector = () => (
         <Layout>
             <Menu mode="horizontal" defaultSelectedKeys={['1']} items={itensMenu} theme='dark' />
             <Content style={{ backgroundColor: "#FFFF" }}>
-                <FormularioTextoSensivel />
+                <FormularioDetector />
          
             </Content>
 
