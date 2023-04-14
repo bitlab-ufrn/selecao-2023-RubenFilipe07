@@ -1,4 +1,4 @@
-import './FormularioTextoSensivel.css';
+import './FormularioDetector.css';
 import { Form, Input, Button } from 'antd';
 
 

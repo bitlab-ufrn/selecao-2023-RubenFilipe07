@@ -6,7 +6,7 @@ import {
 } from 'antd'
 
 import FooterContent from '../components/FooterContent/FooterContent';
-import FormularioDetector from '../components/FormularioTextoSensivel/FormularioDetector';
+import FormularioDetector from '../components/FormularioDetector/FormularioDetector';
 import { Link } from 'react-router-dom';
 
 const { Footer, Content } = Layout;
