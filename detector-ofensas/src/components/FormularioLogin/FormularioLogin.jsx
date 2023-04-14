@@ -14,6 +14,7 @@ const FormularioLogin = () => {
 
     const manageToken = (token) => {
         sessionStorage.setItem('token', token);
+        localStorage.setItem('token', token);
         setToken(token);
         setIsAuth(true);
     }
