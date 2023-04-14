@@ -29,7 +29,7 @@ const itensMenu = [
         icon: <LoginOutlined />,
         label: (<Link to="/login">Login do Administrador</Link>),
     }
-    
+
 ]
 
 
@@ -41,7 +41,7 @@ const Home = () => (
                 <HomeContent />
             </Content>
 
-            <Footer>
+            <Footer style={{ position: 'absolute', bottom: 0, width: '100%' }}>
                 <FooterContent />
             </Footer>
         </Layout>

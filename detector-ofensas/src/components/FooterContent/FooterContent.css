@@ -1,9 +1,6 @@
 .footer-content{
     display: flex;
-    align-items: center;
     justify-content: center; 
-    margin: 0px;
-    padding: 0px;
     color: rgb(107, 107, 107);
 }
 
