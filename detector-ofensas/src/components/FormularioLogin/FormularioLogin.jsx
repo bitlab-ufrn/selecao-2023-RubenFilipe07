@@ -1,28 +1,62 @@
 import './FormularioLogin.css';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
+
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/authContext';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const FormularioLogin = () => {
-   return (
 
-            <Form className='form-login'>
-                <h1 className='titulo-form'>Login</h1>
+    const { setIsAuth, setToken } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-                <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Insira o seu email' }]}>
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Senha" name="senha" rules={[{ required: true, message: 'Insira a sua senha' }]}>
-                    <Input.Password />
-                </Form.Item>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                        Entrar
-                    </Button>
-                </Form.Item>
-            </Form>
-   )
-
-        
+    const manageToken = (token) => {
+        sessionStorage.setItem('token', token);
+        setToken(token);
+        setIsAuth(true);
     }
 
-    export default FormularioLogin;
+
+    const onFinish = async ({ email, senha }) => {
+        try {
+            const response = await axios.post('http://localhost:8080/login-admin', { email, senha }, { headers: { 'api-key': 'JhQwXXztY1s5OsSKgj3mMoJ', } });
+            const { token } = response.data;
+            message.success('Login efetuado com sucesso!');
+            manageToken(token);
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+            if (error.response.status === 401) {
+                message.error('Email ou senha inválidos');
+            } else {
+                message.error('Ocorreu um erro ao efetuar o login. Tente novamente mais tarde.');
+            }
+        }
+    };
+
+
+    return (
+
+        <Form className='form-login' onFinish={onFinish}>
+            <h1 className='titulo-form'>Login</h1>
+
+            <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Insira o seu email' }]}>
+                <Input />
+            </Form.Item>
+            <Form.Item label="Senha" name="senha" rules={[{ required: true, message: 'Insira a sua senha' }]}>
+                <Input.Password />
+            </Form.Item>
+            <Form.Item>
+                <Button type="primary" htmlType="submit">
+                    Entrar
+                </Button>
+            </Form.Item>
+        </Form>
+    )
+
+
+}
+
+export default FormularioLogin;
