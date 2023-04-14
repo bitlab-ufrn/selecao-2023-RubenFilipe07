@@ -102,6 +102,31 @@ app.post('/login-admin', async (req, res) => {
     }
 });
 
+app.post('/verifica-texto', async (req, res) => {
+    const { texto } = req.body;
+    //pega as palavras do banco de dados e salva em uma variável
+    const resultado = await pool.query('SELECT * FROM palavras_ofensivas');
+
+    //salva as palavras do banco de dados em um array separando cada palavra
+    const palavrasOfensivas = resultado.rows.map(palavra => palavra.palavra);
+
+    //filtra as palavras e utiliza regex para encontrar palavras com acentos e caracteres especiais através de expressões regulares
+    const palavrasOfensivasEncontradas = palavrasOfensivas.filter(palavra => {
+        const regex = new RegExp(palavra.replace(/[aáàãâä@]/g, '[aáàãâä@]').replace(/[eéèêë3]/g, '[eéèêë3]').replace(/[iíìîï1]/g, '[iíìîï1]').replace(/[oóòõôö0Ø]/g, '[oóòõôö0Ø]').replace(/[uúùûü]/g, '[uúùûü]'), 'gi');
+        return regex.test(texto);
+    });
+
+    //cria um objeto com diversas informações
+    const resposta = {
+        palavrasDetectadas: palavrasOfensivasEncontradas,
+        qtdPalavrasDetectadas: palavrasOfensivasEncontradas.length,
+        qtdPalavrasCadastradas: palavrasOfensivas.length,
+        porcetagemDetecadasTexto: (palavrasOfensivasEncontradas.length / texto.split(' ').length) * 100,
+        textoCensurado: texto.replace(new RegExp(palavrasOfensivasEncontradas.map(palavra => palavra.replace(/[aáàãâä@]/g, '[aáàãâä@]').replace(/[eéèêë3]/g, '[eéèêë3]').replace(/[iíìîï1]/g, '[iíìîï1]').replace(/[oóòõôö0Ø]/g, '[oóòõôö0Ø]').replace(/[uúùûü]/g, '[uúùûü]')).join('|'), 'gi'), '(censurado)'),
+    };
+
+    res.send(resposta);
+});
 
 app.listen(port, () => {
     console.log(`Rodando em http://localhost:${port}`)
