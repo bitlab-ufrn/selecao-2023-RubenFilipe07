@@ -1,0 +1,22 @@
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin: 0px;
+    padding: 0px;
+    color: rgb(107, 107, 107);
+}
+
+.footer-content a{
+    color: rgb(107, 107, 107);
+    text-decoration: none;
+}
+
+.footer-content a:hover{
+    text-decoration: underline;
+}
+
+.footer-content a:visited{
+    color: rgb(107, 107, 107);
+    text-decoration: underline;
+}
