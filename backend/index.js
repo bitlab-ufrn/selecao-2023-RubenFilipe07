@@ -7,6 +7,8 @@ app.use(cors());
 
 require('dotenv').config();
 
+const jwt = require('jsonwebtoken');
+
 const { Pool } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -60,6 +62,29 @@ app.delete('/palavras-ofensivas/:id', async (req, res) => {
     const { id } = req.params;
     const resultado = await pool.query('DELETE FROM palavras_ofensivas WHERE id = $1', [id]);
     res.send('Palavra deletada com sucesso!');
+});
+
+//cadastra um administrador
+app.post('/cadastro-admin', async (req, res) => {
+    const { nome, email, senha } = req.body;
+    const resultado = await pool.query('INSERT INTO admins (nome, email, senha) VALUES ($1, $2, $3) RETURNING *', [nome, email, senha]);
+    res.send('Admin cadastradp com sucesso!');
+
+    if (resultado.rows.length === 0) {
+        res.status(401).send('Email ou senha inválidos');
+    }
+});
+
+//faz o login do administrador e retorna um token de autenticação
+app.post('/login-admin', async (req, res) => {
+    const { email, senha } = req.body;
+    const resultado = await pool.query('SELECT * FROM admins WHERE email = $1 AND senha = $2', [email, senha]);
+    if (resultado.rows.length === 0) {
+        res.status(401).send('Email ou senha inválidos');
+    } else {
+        const token = jwt.sign({ email }, process.env.JWT_SECRET);
+        res.send(token);
+    }
 });
 
 
