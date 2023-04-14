@@ -6,7 +6,7 @@ import {
 } from 'antd'
 
 import FooterContent from '../components/FooterContent/FooterContent';
-import HomeContent from '../components/HomeContent/HomeContent';
+import FormularioTextoSensivel from '../components/FormularioTextoSensivel/FormularioTextoSensivel';
 import { Link } from 'react-router-dom';
 
 const { Footer, Content } = Layout;
@@ -22,7 +22,7 @@ const itensMenu = [
     {
         key: '2',
         icon: <UnorderedListOutlined />,
-        label: (<Link to="/detector">Detectar Linguagem Imprópria</Link>),
+        label: (<Link to="/gerenciar-ofensas">Detectar Linguagem Imprópria</Link>),
     },
     {
         key: '3',
@@ -33,12 +33,13 @@ const itensMenu = [
 ]
 
 
-const Home = () => (
+const Detector = () => (
     <Fragment>
         <Layout>
             <Menu mode="horizontal" defaultSelectedKeys={['1']} items={itensMenu} theme='dark' />
             <Content style={{ backgroundColor: "#FFFF" }}>
-                <HomeContent />
+                <FormularioTextoSensivel />
+         
             </Content>
 
             <Footer style={{ position: 'absolute', bottom: 0, width: '100%' }}>
@@ -49,4 +50,4 @@ const Home = () => (
 
 );
 
-export default Home;
+export default Detector;

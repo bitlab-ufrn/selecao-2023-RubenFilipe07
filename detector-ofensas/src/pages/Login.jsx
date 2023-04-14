@@ -22,7 +22,7 @@ const itensMenu = [
    {
       key: '2',
       icon: <UnorderedListOutlined />,
-      label: (<Link to="/gerenciar-ofensas">Detectar Linguagem Imprópria</Link>),
+      label: (<Link to="/detector">Detectar Linguagem Imprópria</Link>),
    },
    {
       key: '3',
@@ -44,7 +44,7 @@ const Home = () => (
          <Footer style={{ position: 'absolute', bottom: 0, width: '100%' }}>
             <FooterContent />
          </Footer>
-         
+
       </Layout>
    </Fragment>
 
