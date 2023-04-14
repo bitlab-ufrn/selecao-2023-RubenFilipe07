@@ -7,6 +7,8 @@ app.use(cors());
 
 require('dotenv').config();
 
+const fs = require('fs');
+
 const jwt = require('jsonwebtoken');
 
 const { Pool } = require('pg');
@@ -43,6 +45,26 @@ CREATE TABLE IF NOT EXISTS palavras_ofensivas (
     palavra VARCHAR(255) NOT NULL
 )`
 );
+
+//adiciona palavras ofensivas de um arquivo .txt dentro da raiz do projeto
+app.get('/adiciona-palavras-arquivo', async (req, res) => {
+    const palavras = fs.readFileSync('bd_seed.txt', 'utf-8').split('\r');
+    const resultado = await pool.query('SELECT * FROM palavras_ofensivas');
+
+
+    //por questão de segurança, só adiciona as palavras se a tabela estiver vazia para não adicionar palavras repetidas
+    if (resultado.rows.length !== 0) {
+        res.send('As palavras já foram adicionadas!');
+    } else {
+        palavras.forEach(async palavra => {
+            if (palavra !== '\n' && palavra !== '' && palavra !== ' ') {
+                await pool.query('INSERT INTO palavras_ofensivas (palavra) VALUES ($1)', [palavra.toLowerCase()]);
+            }
+        });
+        res.send('Palavras adicionadas com sucesso!');
+    }
+});
+
 
 //cadastra uma palavra ofensiva
 app.post('/palavras-ofensivas', async (req, res) => {
