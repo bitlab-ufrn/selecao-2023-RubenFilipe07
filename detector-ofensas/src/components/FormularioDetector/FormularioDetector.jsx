@@ -78,7 +78,8 @@ const FormularioLogin = () => {
                             </Card>
 
                             <Card title="Porcentagem impróprias">
-                                <p>{resultadoApi.porcetagemDetecadasTexto.toFixed(2)}% das palavras do texto são impróprias</p>
+                                { resultadoApi.porcetagemDetecadasTexto > 0 ?
+                                <p>{resultadoApi.porcetagemDetecadasTexto.toFixed(2)}% das palavras do texto são impróprias</p> : <></>}
                             </Card>
                    </Modal>
                     </Fragment>
