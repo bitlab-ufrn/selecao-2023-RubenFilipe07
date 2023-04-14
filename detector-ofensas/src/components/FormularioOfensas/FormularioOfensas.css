@@ -1,0 +1,22 @@
+.form-ofensas {
+    width: 50%;
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin: 3% auto ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.form-ofensas button {
+    display: block;
+    margin: 0px auto;
+    width: 40%;
+}
+
+.titulo-form {
+    text-align: center;
+    margin: 15px;
+}
