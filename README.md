@@ -137,4 +137,5 @@ Para resolver o problema de um de seus clientes e também vender seu produto par
     <img src="https://img.shields.io/badge/Fly.IO-9c31e2?style=for-the-badge" />
   </a> <br/>
   
- 
+  <h5>Licensa</h5>
+  <a href="https://github.com/bitlab-ufrn/selecao-2023-RubenFilipe07/blob/main/LICENSE">MIT</a>
