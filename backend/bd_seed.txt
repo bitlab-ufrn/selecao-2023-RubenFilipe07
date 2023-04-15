@@ -3,7 +3,7 @@ porra
 caralho
 puta
 puto
-cu 
+cu
 vadia
 vagabunda
 vagabundo
@@ -93,7 +93,7 @@ ladrao
 ladra
 ladrona
 meliante
-mocreia
+mocreia 
 moleque
 noob
 otario
