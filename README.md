@@ -37,7 +37,7 @@ Para resolver o problema de um de seus clientes e também vender seu produto par
 <h5>Para rodar o projeto React</h5>
 <ol>
   <li>Certifique-se de ter o node.js instalado na sua máquina, caso não tenha, baixe aqui: <a href="https://nodejs.org/en/">nodejs.org</a></li>
-  <li>Na raiz do projeto <code>Aplicação/SCE-Sistema-de-Cadastro-de-Estagiarios</code> digite <code>npm i</code> no terminal para baixar as dependências</li>
+  <li>Na raiz do projeto <code>/detector-ofensas</code> digite <code>npm i</code> no terminal para baixar as dependências</li>
   <li>Digite <code>npm run dev</code> para iniciar o servidor e o acesse pelo link: <code>http://localhost:8080/</code></li>
 </ol>
 
@@ -49,7 +49,7 @@ Para resolver o problema de um de seus clientes e também vender seu produto par
 
 <h5>Para rodar o projeto Node</h5>
 <ol>
-  <li>Na raiz do projeto execute<code>npm i</code> para instalar as dependências</li>
+  <li>Na raiz do projeto em  <code>/backend</code>  execute<code>npm i</code> para instalar as dependências</li>
   <li>Crie um arquivo .ENV e adicione as variáveis de ambiente (descritas acima)</li>
   <li>Instale o PostgreSQL.js: <a href="https://www.postgresql.org/download/">postgresql.org</a> </li>
   <li>Execute <code>node index.js</code> para iniciar a aplicação</li>
@@ -136,3 +136,6 @@ Para resolver o problema de um de seus clientes e também vender seu produto par
   <a href="https://fly.io/">
     <img src="https://img.shields.io/badge/Fly.IO-9c31e2?style=for-the-badge" />
   </a> <br/>
+  
+  <h5>Licensa</h5>
+  <a href="https://github.com/bitlab-ufrn/selecao-2023-RubenFilipe07/blob/main/LICENSE">MIT</a>
