@@ -38,9 +38,9 @@ const ListaOfensas = (props) => {
 
   const deletaPalavra = (id) => {
     axios
-      .delete(`http://localhost:8080/palavras-ofensivas/${id}`, {
+      .delete(`${import.meta.env.VITE_API_URL}/palavras-ofensivas/${id}`, {
         headers: {
-          'api-key': 'JhQwXXztY1s5OsSKgj3mMoJ',
+          'api-key': import.meta.env.VITE_API_KEY,
         },
       })
       .then((response) => {
@@ -53,9 +53,9 @@ const ListaOfensas = (props) => {
   };
 
   const onFinish = (values) => {
-    axios.put(`http://localhost:8080/palavras-ofensivas/${editingId}`, values, {
+    axios.put(`${import.meta.env.VITE_API_URL}/palavras-ofensivas/${editingId}`, values, {
         headers: {
-          'api-key': 'JhQwXXztY1s5OsSKgj3mMoJ',
+          'api-key': import.meta.env.VITE_API_KEY,
         },
       })
       .then((response) => {

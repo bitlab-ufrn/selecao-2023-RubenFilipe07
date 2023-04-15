@@ -22,7 +22,7 @@ const FormularioLogin = () => {
 
     const onFinish = async ({ email, senha }) => {
         try {
-            const response = await axios.post('http://localhost:8080/login-admin', { email, senha }, { headers: { 'api-key': 'JhQwXXztY1s5OsSKgj3mMoJ', } });
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/login-admin`, { email, senha }, { headers: { 'api-key': import.meta.env.VITE_API_KEY, } });
             const { token } = response.data;
             message.success('Login efetuado com sucesso!');
             manageToken(token);

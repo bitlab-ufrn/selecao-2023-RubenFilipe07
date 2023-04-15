@@ -17,7 +17,7 @@ const FormularioLogin = () => {
     const [visible, setVisible] = useState(false);
 
     const onFinish = async ({ texto }) => {
-        const response = await axios.post('http://localhost:8080/verifica-texto', { texto }, { headers: { 'api-key': 'JhQwXXztY1s5OsSKgj3mMoJ', } });
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/verifica-texto`, { texto }, { headers: { 'api-key': import.meta.env.VITE_API_KEY, } });
         setResultadoApi(response.data);
     };
 

@@ -10,7 +10,7 @@ const FormularioOfensas = () => {
     const onFinish = async ({ palavra }) => {
 
         try {
-            const response = await axios.post('http://localhost:8080/palavras-ofensivas', { palavra }, { headers: { 'api-key': 'JhQwXXztY1s5OsSKgj3mMoJ', } });
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/palavras-ofensivas`, { palavra }, { headers: { 'api-key': import.meta.env.VITE_API_KEY, } });
             getOfensas();
             message.success('Palavra ofensiva cadastrada com sucesso!');
         } catch (error) {
@@ -24,7 +24,7 @@ const FormularioOfensas = () => {
 
     const getOfensas = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/palavras-ofensivas', { headers: { 'api-key': 'JhQwXXztY1s5OsSKgj3mMoJ', } });
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/palavras-ofensivas`, { headers: { 'api-key': import.meta.env.VITE_API_KEY, } });
             setOfensas(response.data);
         } catch (error) {
             message.error('Erro ao carregar as ofensas cadastradas.');
