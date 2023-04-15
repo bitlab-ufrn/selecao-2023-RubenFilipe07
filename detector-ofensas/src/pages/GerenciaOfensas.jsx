@@ -51,7 +51,7 @@ const GerenciaOfensas = () => {
         {
             key: '3',
             icon: <MenuOutlined />,
-            label: (<Link to="/">Gerenciar palavras</Link>),
+            label: (<Link to="/gerenciar-ofensas">Gerenciar palavras</Link>),
         },
         {
             key: '4',
