@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS palavras_ofensivas (
 
 //adiciona palavras ofensivas de um arquivo .txt dentro da raiz do projeto
 app.get('/adiciona-palavras-arquivo', async (req, res) => {
-    const palavras = fs.readFileSync('bd_seed.txt', 'utf-8').split('\r');
+    const palavras = fs.readFileSync('bd_seed.txt', { encoding: 'utf-8' }).split('\r\n');
     const resultado = await pool.query('SELECT * FROM palavras_ofensivas');
 
 
